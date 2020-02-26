@@ -20,6 +20,7 @@ Potion Ideas
 	InitSpeedPotion();
 	InitFlashPotion();
 	InitHealingPotion();
+	InitEnergyPotion();
 	
 	// New commands for debugging
 	CommandCreate("getspeed", false, ScriptWrap(GetSpeed));
@@ -27,6 +28,7 @@ Potion Ideas
 	CommandCreate("potions", false, ScriptWrap(GivePotions));
 	CommandCreate("speedpotion", false, ScriptWrap(GiveSpeedPotion));
 	CommandCreate("flashpotion", false, ScriptWrap(GiveFlashPotion));
+	CommandCreate("energypotion", false, ScriptWrap(GiveEnergyPotion));
 	CommandCreate("dospeedpotion", false, ScriptWrap(StartSpeedPotionBuff));
 	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
 	
@@ -46,10 +48,13 @@ Potion Ideas
 	GainItem(Item.DragonPhiltre, 1);
 	GainItem(ItemPotionOfSpeed, 1);
 	GainItem(ItemFlashPotion, 1);
-	
+	GainItem(InitEnergyPotion, 1);
+
 #define GiveSpeedPotion()
 	GainItem(ItemPotionOfSpeed, 1);
 
 #define GiveFlashPotion()
 	GainItem(ItemFlashPotion, 1);
 	
+#define GiveEnergyPotion
+	GainItem(ItemEnergyPotion, 1);
