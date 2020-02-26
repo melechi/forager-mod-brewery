@@ -2,11 +2,14 @@
 
 Potion Ideas
 =============
+* Energy Potion
+* Change Healing Potion to not give energy.
 * Water walking
 * All potion
 * Teleportation
 * Nova
 * Rainbow Aura
+* Auto-Smelt
 */
 
 
@@ -16,6 +19,7 @@ Potion Ideas
 	InitCommon();
 	InitSpeedPotion();
 	InitFlashPotion();
+	InitHealingPotion();
 	
 	// New commands for debugging
 	CommandCreate("getspeed", false, ScriptWrap(GetSpeed));
@@ -27,6 +31,10 @@ Potion Ideas
 	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
 	
 	
+#define UseHealingPotion()
+	objPlayer.hp++;
+	
+
 #define GivePotions()
 	GainItem(Item.HealingPotion, 1);
 	GainItem(Item.Thunderbolt, 1);
