@@ -21,6 +21,8 @@
 		ScriptWrap(UseEnergyPotion),
 		0
 	);
+	
+	StructureAddItem(Structure.Cauldron, ItemEnergyPotion);
 
 #define UseEnergyPotion
 	objPlayer.energy = objPlayer.energy + 25;

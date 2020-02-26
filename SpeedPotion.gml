@@ -17,18 +17,20 @@
 	ItemPotionOfSpeed = ItemCreate
 	(
 		undefined,
-		"Potion of Speed",
+		"Speed Potion",
 		"Makes you move fast.",
 		sprThunderbolt,
 		ItemType.Consumable,
 		ItemSubType.None,
-		100,
+		200,
 		0,
 		0,
 		[Item.Thunderbolt, 5],
 		ScriptWrap(StartSpeedPotionBuff),
 		60 * 2
 	);
+	
+	StructureAddItem(Structure.Cauldron, ItemPotionOfSpeed);
 	
 #define StartSpeedPotionBuff()
 	ResetSpeedBuffs();
