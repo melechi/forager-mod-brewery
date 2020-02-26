@@ -1,7 +1,6 @@
 #define InitCommon()
 	globalvar _old_maxSpd, _old_accel;
 	
-
 #define sTicks(seconds)
 	return 60 * real(seconds);
 
@@ -38,3 +37,4 @@
 	objPlayer.maxSpd = maxSpd;
 	objPlayer.accel = accel;
 	
+#define NoScript
