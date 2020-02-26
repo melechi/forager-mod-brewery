@@ -24,7 +24,7 @@
 		ItemSubType.None,
 		100,
 		0,
-		9999,
+		0,
 		[Item.Thunderbolt, 5, Item.LegendaryGem, 1, Item.NuclearFuelCell, 1],
 		ScriptWrap(StartFlashPotionBuff),
 		60 * 2

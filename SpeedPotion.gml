@@ -24,7 +24,7 @@
 		ItemSubType.None,
 		100,
 		0,
-		9999,
+		0,
 		[Item.Thunderbolt, 5],
 		ScriptWrap(StartSpeedPotionBuff),
 		60 * 2
