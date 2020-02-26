@@ -2,8 +2,6 @@
 
 Potion Ideas
 =============
-* Energy Potion
-* Change Healing Potion to not give energy.
 * Water walking
 * All potion
 * Teleportation
