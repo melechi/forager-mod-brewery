@@ -1,5 +1,7 @@
 /*
 
+TODO:
+
 Potion Ideas
 =============
 * Water walking
@@ -7,7 +9,8 @@ Potion Ideas
 * Teleportation
 * Nova
 * Rainbow Aura
-* Auto-Smelt
+* Magnet Potion
+* Philosopher's Potion (Turns EVERYTHING dropped to gold)
 */
 
 
@@ -19,6 +22,7 @@ Potion Ideas
 	InitFlashPotion();
 	InitHealingPotion();
 	InitEnergyPotion();
+	InitSmeltingPotion();
 	
 	// New commands for debugging
 	CommandCreate("getspeed", false, ScriptWrap(GetSpeed));
@@ -26,6 +30,7 @@ Potion Ideas
 	CommandCreate("potions", false, ScriptWrap(GivePotions));
 	CommandCreate("speedpotion", false, ScriptWrap(GiveSpeedPotion));
 	CommandCreate("flashpotion", false, ScriptWrap(GiveFlashPotion));
+	CommandCreate("smeltingpotion", false, ScriptWrap(GiveSmeltingPotion));
 	CommandCreate("energypotion", false, ScriptWrap(GiveEnergyPotion));
 	CommandCreate("dospeedpotion", false, ScriptWrap(StartSpeedPotionBuff));
 	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
@@ -56,3 +61,7 @@ Potion Ideas
 	
 #define GiveEnergyPotion
 	GainItem(ItemEnergyPotion, 1);
+
+#define GiveSmeltingPotion()
+	GainItem(ItemSmeltingPotion, 1);
+	
