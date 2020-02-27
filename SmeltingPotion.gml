@@ -1,8 +1,10 @@
 #define InitSmeltingPotion()
 
 	// CONSTANTS
-	globalvar SMELT_PER_TICK;
+	globalvar	SMELT_PER_TICK,
+				SMELT_POTION_DURATION;
 	SMELT_PER_TICK = 1;
+	SMELT_POTION_DURATION = 60;
 	
 	// TRACKING
 	globalvar	ItemSmeltingPotion,
@@ -26,11 +28,13 @@
 		0,
 		0,
 		[
-			Item.IronIngot, 5
-			Item.GoldIngot, 5
+			Item.IronIngot, 3
+			Item.GoldIngot, 3
+			Item.Cinderbloom, 5
+			Item.BottledDeathMoth, 1
 		],
 		ScriptWrap(StartSmeltingPotionBuff),
-		30
+		SMELT_POTION_DURATION
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemSmeltingPotion);
@@ -39,7 +43,7 @@
 	Trace("Start Smelting Potion Buff");
 	
 	_instSmeltingPotion = ModObjectSpawn(objPlayer.x, objPlayer.y, 0);
-	smeltingPotionBuffCountdown = sTicks(10);
+	smeltingPotionBuffCountdown = sTicks(SMELT_POTION_DURATION);
 	with(_instSmeltingPotion)
 	{
 		ID_SmeltingPotion = id;
@@ -57,16 +61,26 @@
 	if (thisTick != lastTick)
 	{
 		lastTick = thisTick;
+		
+		var list = ds_list_create();
+		
 		if (ItemCount(Item.IronOre, false))
 		{
-			Trace("Found Iron Ore");
-			DoSmelt("iron", SMELT_PER_TICK);
+			ds_list_add(list,"iron");
 		}
 		if (ItemCount(Item.GoldOre, false))
 		{
-			Trace("Found Gold Ore");
-			DoSmelt("gold", SMELT_PER_TICK);
+			ds_list_add(list,"gold");
 		}
+		if (ItemCount(Item.Sand, false))
+		{
+			ds_list_add(list,"sand");
+		}
+		
+		var rand = irandom((ds_list_size(list) - 1));
+		var item = ds_list_find_value(list,rand);
+		
+		DoSmelt(item, SMELT_PER_TICK);
 	}
 	
 	smeltingPotionBuffCountdown--;
@@ -79,11 +93,16 @@
 	if (type == "iron")
 	{
 		RemoveItem(Item.IronOre, quantity);
-		GainItem(Item.IronIngot,quantity);
+		GainItem(Item.IronIngot, quantity);
 	}
 	else if (type == "gold")
 	{
 		RemoveItem(Item.GoldOre, quantity);
-		GainItem(Item.GoldIngot,quantity);
+		GainItem(Item.GoldIngot, quantity);
+	}
+	else if (type == "sand")
+	{
+		RemoveItem(Item.Sand, quantity);
+		GainItem(Item.Glass, quantity);
 	}
 	instance_create_depth(objPlayer.x, objPlayer.y, 0, objSmoke);
