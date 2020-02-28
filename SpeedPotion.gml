@@ -7,13 +7,14 @@
 	
 	// TRACKING
 	globalvar	ItemPotionOfSpeed,
+				sprSpeedPotion,
 				ID_SpeedPotion,
 				potionOfSpeedCountdown,
 				lastSpeedPotionTick;
 	
 	SPEED_POTION_SPEED = 5;
 	SPEED_POTION_ACCEL = 5;
-	SPEED_POTION_DURATION = 10;
+	SPEED_POTION_DURATION = 30;
 	
 	potionOfSpeedCountdown = 0;
 	lastSpeedPotionTick = 999;
