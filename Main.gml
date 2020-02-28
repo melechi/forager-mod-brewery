@@ -2,6 +2,8 @@
 
 TODO:
 
+Rename mod to "Brewery".
+
 Potion Ideas
 =============
 * Water walking
@@ -23,6 +25,7 @@ Potion Ideas
 	InitHealingPotion();
 	InitEnergyPotion();
 	InitSmeltingPotion();
+	InitMagnetPotion();
 	
 	// New commands for debugging
 	CommandCreate("getspeed", false, ScriptWrap(GetSpeed));
@@ -31,6 +34,7 @@ Potion Ideas
 	CommandCreate("speedpotion", false, ScriptWrap(GiveSpeedPotion));
 	CommandCreate("flashpotion", false, ScriptWrap(GiveFlashPotion));
 	CommandCreate("smeltingpotion", false, ScriptWrap(GiveSmeltingPotion));
+	CommandCreate("magnetpotion", false, ScriptWrap(GiveMagnetPotion));
 	CommandCreate("energypotion", false, ScriptWrap(GiveEnergyPotion));
 	CommandCreate("dospeedpotion", false, ScriptWrap(StartSpeedPotionBuff));
 	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
@@ -64,4 +68,7 @@ Potion Ideas
 
 #define GiveSmeltingPotion()
 	GainItem(ItemSmeltingPotion, 1);
+
+#define GiveMagnetPotion()
+	GainItem(ItemMagnetPotion, 1);
 	
