@@ -2,24 +2,30 @@
 	
 	// CONSTANTS
 	globalvar	SPEED_POTION_SPEED,
-				SPEED_POTION_ACCEL;
+				SPEED_POTION_ACCEL,
+				SPEED_POTION_DURATION;
 	
 	// TRACKING
 	globalvar	ItemPotionOfSpeed,
 				ID_SpeedPotion,
-				potionOfSpeedCountdown;
+				potionOfSpeedCountdown,
+				lastSpeedPotionTick;
 	
 	SPEED_POTION_SPEED = 5;
-	SPEED_POTION_ACCEL = 10;
+	SPEED_POTION_ACCEL = 5;
+	SPEED_POTION_DURATION = 10;
 	
 	potionOfSpeedCountdown = 0;
+	lastSpeedPotionTick = 999;
+	
+	sprSpeedPotion = sprite_add("Resources/Sprites/SpeedPotion.png", 1, false, false, 9, 9);
 
 	ItemPotionOfSpeed = ItemCreate
 	(
 		undefined,
 		"Speed Potion",
 		"Makes you move fast.",
-		sprThunderbolt,
+		sprSpeedPotion,
 		ItemType.Consumable,
 		ItemSubType.None,
 		200,
@@ -27,7 +33,7 @@
 		0,
 		[Item.Thunderbolt, 5],
 		ScriptWrap(StartSpeedPotionBuff),
-		60 * 2
+		SPEED_POTION_DURATION
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemPotionOfSpeed);
@@ -42,7 +48,7 @@
 		SPEED_POTION_ACCEL
 	);
 	_instPotionOfSpeed = ModObjectSpawn(objPlayer.x, objPlayer.y, 0);
-	potionOfSpeedCountdown = sTicks(5);
+	potionOfSpeedCountdown = sTicks(SPEED_POTION_DURATION);
 	with(_instPotionOfSpeed)
 	{
 		ID_SpeedPotion = id;
@@ -52,16 +58,20 @@
 #define EndSpeedPotionBuff()
 	Trace("End Speed Potion Buff");
 	potionOfSpeedCountdown = 0;
+	lastSpeedPotionTick = 999;
 	instance_destroy(ID_SpeedPotion);
 	RestoreSpeed();
 
 
 #define SpeedPotionTick()
-	potionOfSpeedCountdown--;
-	// objZap
-	// ZapSpawn(objPlayer);
-	// Trace("Countdown: " + string(round(potionOfSpeedCountdown / 60) ));
-	if (potionOfSpeedCountdown <= 0)
+	var thisTick = round(potionOfSpeedCountdown / 60);
+	if (thisTick < lastSpeedPotionTick)
+	{
+		lastSpeedPotionTick = thisTick;
+		instance_create_depth(objPlayer.x, objPlayer.y, -1, objZap);
+	}
+	
+	if (--potionOfSpeedCountdown <= 0)
 	{
 		EndSpeedPotionBuff();
 	}
