@@ -2,8 +2,6 @@
 
 TODO:
 
-Rename mod to "Brewery".
-
 Potion Ideas
 =============
 * Water walking
