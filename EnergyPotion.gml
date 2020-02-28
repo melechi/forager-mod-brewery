@@ -1,12 +1,15 @@
 #define InitEnergyPotion
-	globalvar ItemEnergyPotion;
+	globalvar	ItemEnergyPotion,
+				sprEnergyPotion;
+	
+	sprEnergyPotion = sprite_add("Resources/Sprites/EnergyPotion.png", 1, false, false, 9, 9);
 	
 	ItemEnergyPotion = ItemCreate
 	(
 		undefined,
 		"Energy Potion",
 		"Like coffee, but green.",
-		sprMandragora,
+		sprEnergyPotion,
 		ItemType.Consumable,
 		ItemSubType.None,
 		36,
@@ -19,7 +22,7 @@
 			Item.BottledTorchbug, 1
 		],
 		ScriptWrap(UseEnergyPotion),
-		0
+		60
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemEnergyPotion);
