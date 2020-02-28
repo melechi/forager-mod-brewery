@@ -13,8 +13,8 @@
 	
 	smeltingPotionBuffCountdown = 0;
 	
-	globalvar lastTick;
-	lastTick = 0;
+	globalvar lastSmeltingPotionTick;
+	lastSmeltingPotionTick = 0;
 	
 	ItemSmeltingPotion = ItemCreate
 	(
@@ -34,7 +34,7 @@
 			Item.BottledDeathMoth, 1
 		],
 		ScriptWrap(StartSmeltingPotionBuff),
-		SMELT_POTION_DURATION
+		60 * 2
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemSmeltingPotion);
@@ -58,9 +58,9 @@
 
 #define SmeltingPotionTick()
 	var thisTick = round(smeltingPotionBuffCountdown / 60);
-	if (thisTick != lastTick)
+	if (thisTick != lastSmeltingPotionTick)
 	{
-		lastTick = thisTick;
+		lastSmeltingPotionTick = thisTick;
 		
 		var list = ds_list_create();
 		
@@ -83,8 +83,7 @@
 		DoSmelt(item, SMELT_PER_TICK);
 	}
 	
-	smeltingPotionBuffCountdown--;
-	if (smeltingPotionBuffCountdown <= 0)
+	if (--smeltingPotionBuffCountdown <= 0)
 	{
 		EndSmeltingPotionBuff();
 	}
