@@ -11,7 +11,6 @@ Potion Ideas
 * Teleportation
 * Nova
 * Rainbow Aura
-* Magnet Potion
 * Philosopher's Potion (Turns EVERYTHING dropped to gold)
 */
 
