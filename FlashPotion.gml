@@ -60,9 +60,7 @@
 	RestoreSpeed();
 
 #define FlashPotionTick()
-	flashPotionCountdown--;
-	// Trace("Countdown: " + string(round(flashPotionCountdown / 60) ));
-	if (flashPotionCountdown <= 0)
+	if (--flashPotionCountdown <= 0)
 	{
 		EndFlashPotionBuff();
 	}
