@@ -22,7 +22,13 @@
 			Item.BottledTorchbug, 1
 		],
 		ScriptWrap(UseEnergyPotion),
-		60
+		mTicks(1),
+		false,
+		undefined,
+		undefined,
+		undefined,
+		undefined,
+		[Skill.Thaumaturgy]
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemEnergyPotion);

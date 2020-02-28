@@ -33,7 +33,13 @@
 			Item.BottledDeathMoth, 1
 		],
 		ScriptWrap(StartMagnetPotionBuff),
-		60
+		mTicks(1),
+		false,
+		undefined,
+		undefined,
+		undefined,
+		undefined,
+		[Skill.Thaumaturgy]
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemMagnetPotion);

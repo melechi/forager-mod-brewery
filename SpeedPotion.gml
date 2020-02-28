@@ -34,7 +34,13 @@
 		0,
 		[Item.Thunderbolt, 5],
 		ScriptWrap(StartSpeedPotionBuff),
-		60 * 2
+		mTicks(2),
+		false,
+		undefined,
+		undefined,
+		undefined,
+		undefined,
+		[Skill.Thaumaturgy]
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemPotionOfSpeed);

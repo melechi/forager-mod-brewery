@@ -34,7 +34,13 @@
 			Item.BottledDeathMoth, 1
 		],
 		ScriptWrap(StartSmeltingPotionBuff),
-		60 * 2
+		mTicks(2),
+		false,
+		undefined,
+		undefined,
+		undefined,
+		undefined,
+		[Skill.Thaumaturgy]
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemSmeltingPotion);
