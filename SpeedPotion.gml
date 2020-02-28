@@ -34,7 +34,7 @@
 		0,
 		[Item.Thunderbolt, 5],
 		ScriptWrap(StartSpeedPotionBuff),
-		SPEED_POTION_DURATION
+		60 * 2
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemPotionOfSpeed);
