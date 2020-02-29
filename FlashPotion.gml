@@ -15,7 +15,7 @@
 				lastPlayerY;
 	
 	FLASH_POTION_SPEED = 20;
-	FLASH_POTION_ACCEL = 20;
+	FLASH_POTION_ACCEL = 10;
 	FLASH_POTION_DURATION = 10;
 	
 	flashPotionCountdown = 0;
@@ -39,18 +39,13 @@
 		0,
 		[
 			Item.Thunderbolt, 1,
-			ItemPotionOfSpeed, 1
+			ItemSpeedPotion, 1
 			Item.LegendaryGem, 1,
 			Item.NuclearFuelCell, 1
 		],
 		ScriptWrap(StartFlashPotionBuff),
 		mTicks(2),
-		false,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		[Skill.Thaumaturgy]
+		false
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemFlashPotion);
@@ -81,6 +76,7 @@
 #define FlashPotionTick()
 	if (--flashPotionCountdown > 0)
 	{
+		//Only make smoke effect if the player moves.
 		if (lastPlayerX != objPlayer.x
 		|| lastPlayerY != objPlayer.y)
 		{
