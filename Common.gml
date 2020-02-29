@@ -36,5 +36,24 @@
 #define SetSpeedAccel(maxSpd,accel)
 	objPlayer.maxSpd = maxSpd;
 	objPlayer.accel = accel;
-	
+
+#define CreateEffect(x, y, depth, sprite, _lifetime)
+	with ModObjectSpawn(x, y, depth-1)
+	{
+		player = objPlayer;
+		sprite_index = sprite;
+		lifetime = _lifetime;
+
+		InstanceAssignMethod(id, "step", ScriptWrap(DestroyEffect), true)
+	}
+
+#define DestroyEffect()
+	if (--lifetime <= 0)
+	{
+		instance_destroy(id);
+	}
+
+
+
+
 #define NoScript
