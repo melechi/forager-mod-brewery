@@ -34,12 +34,7 @@
 		],
 		ScriptWrap(StartMagnetPotionBuff),
 		mTicks(1),
-		false,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		[Skill.Thaumaturgy]
+		false
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemMagnetPotion);

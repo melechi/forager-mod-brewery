@@ -23,12 +23,7 @@
 		],
 		ScriptWrap(UseEnergyPotion),
 		mTicks(1),
-		false,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		[Skill.Thaumaturgy]
+		true
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemEnergyPotion);

@@ -38,12 +38,7 @@
 		],
 		ScriptWrap(StartSpeedPotionBuff),
 		mTicks(2),
-		false,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		[Skill.Thaumaturgy]
+		false
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemSpeedPotion);
