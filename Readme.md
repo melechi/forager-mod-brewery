@@ -11,7 +11,7 @@
 * Magnet Potion - Attract items to you for 30 seconds.
 * Smelting Potion - Auto smelt ore and glass from your inventory for 60 seconds.
 
-**Note:** Health Potion has been modified to not give energy to encourage the use of both.
+**Note:** Health Potion has been modified to not give energy to encourage the use of both. The recipe has been changed to support this.
 
 
 More potions coming soon! Comment with any ideas, suggestions and any problems you find.
