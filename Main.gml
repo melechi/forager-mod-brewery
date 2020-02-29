@@ -12,18 +12,25 @@ Potion Ideas
 * Philosopher's Potion (Turns EVERYTHING dropped to gold)
 */
 
-
-
 #define Main
 
 	InitCommon();
-	InitSpeedPotion();
-	InitFlashPotion();
 	InitHealingPotion();
 	InitEnergyPotion();
+	InitSpeedPotion();
+	InitFlashPotion();
 	InitSmeltingPotion();
 	InitMagnetPotion();
 	
+	InitCommands();
+	
+#define OnRoomLoad
+	ItemEdit(ItemSpeedPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemFlashPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemSmeltingPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemMagnetPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+
+#define InitCommands()
 	// New commands for debugging
 	CommandCreate("getspeed", false, ScriptWrap(GetSpeed));
 	CommandCreate("resetspeed", false, ScriptWrap(ResetSpeed));
@@ -35,11 +42,6 @@ Potion Ideas
 	CommandCreate("energypotion", false, ScriptWrap(GiveEnergyPotion));
 	CommandCreate("dospeedpotion", false, ScriptWrap(StartSpeedPotionBuff));
 	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
-	
-	
-#define UseHealingPotion()
-	objPlayer.hp++;
-	
 
 #define GivePotions()
 	GainItem(Item.HealingPotion, 1);
@@ -50,12 +52,15 @@ Potion Ideas
 	GainItem(Item.Mandragora, 1);
 	GainItem(Item.BloodFuryCocktail, 1);
 	GainItem(Item.DragonPhiltre, 1);
-	GainItem(ItemPotionOfSpeed, 1);
+	GainItem(ItemSpeedPotion, 1);
 	GainItem(ItemFlashPotion, 1);
 	GainItem(InitEnergyPotion, 1);
+	GainItem(GiveSmeltingPotion, 1);
+	GainItem(GiveMagnetPotion, 1);
+	
 
 #define GiveSpeedPotion()
-	GainItem(ItemPotionOfSpeed, 1);
+	GainItem(ItemSpeedPotion, 1);
 
 #define GiveFlashPotion()
 	GainItem(ItemFlashPotion, 1);
