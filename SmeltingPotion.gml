@@ -8,6 +8,7 @@
 	
 	// TRACKING
 	globalvar	ItemSmeltingPotion,
+				sprSmeltingPotion,
 				ID_SmeltingPotion,
 				smeltingPotionBuffCountdown;
 	
@@ -16,35 +17,34 @@
 	globalvar lastSmeltingPotionTick;
 	lastSmeltingPotionTick = 0;
 	
+	sprSmeltingPotion = sprite_add("Resources/Sprites/SmeltingPotion.png", 1, false, false, 9, 9);
+	
 	ItemSmeltingPotion = ItemCreate
 	(
 		undefined,
 		"Smelting Potion",
 		"auto smelts ore in your inventory.",
-		sprThunderbolt,
+		sprSmeltingPotion,
 		ItemType.Consumable,
 		ItemSubType.None,
 		200,
 		0,
 		0,
 		[
-			Item.IronIngot, 3
-			Item.GoldIngot, 3
-			Item.Cinderbloom, 5
+			Item.IronIngot, 3,
+			Item.GoldIngot, 3,
+			Item.Cinderbloom, 5,
 			Item.BottledDeathMoth, 1
 		],
 		ScriptWrap(StartSmeltingPotionBuff),
 		mTicks(2),
-		false,
-		undefined,
-		undefined,
-		undefined,
-		undefined,
-		[Skill.Thaumaturgy]
+		false
 	);
 	
 	StructureAddItem(Structure.Cauldron, ItemSmeltingPotion);
 	
+	
+
 #define StartSmeltingPotionBuff()
 	Trace("Start Smelting Potion Buff");
 	
