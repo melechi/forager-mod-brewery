@@ -6,7 +6,7 @@
 				SPEED_POTION_DURATION;
 	
 	// TRACKING
-	globalvar	ItemPotionOfSpeed,
+	globalvar	ItemSpeedPotion,
 				sprSpeedPotion,
 				ID_SpeedPotion,
 				potionOfSpeedCountdown,
@@ -21,7 +21,7 @@
 	
 	sprSpeedPotion = sprite_add("Resources/Sprites/SpeedPotion.png", 1, false, false, 9, 9);
 
-	ItemPotionOfSpeed = ItemCreate
+	ItemSpeedPotion = ItemCreate
 	(
 		undefined,
 		"Speed Potion",
@@ -32,7 +32,10 @@
 		200,
 		0,
 		0,
-		[Item.Thunderbolt, 5],
+		[
+			ItemEnergyPotion, 2,
+			Item.Thunderbolt, 1
+		],
 		ScriptWrap(StartSpeedPotionBuff),
 		mTicks(2),
 		false,
@@ -43,7 +46,7 @@
 		[Skill.Thaumaturgy]
 	);
 	
-	StructureAddItem(Structure.Cauldron, ItemPotionOfSpeed);
+	StructureAddItem(Structure.Cauldron, ItemSpeedPotion);
 	
 #define StartSpeedPotionBuff()
 	ResetSpeedBuffs();
