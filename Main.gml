@@ -5,15 +5,14 @@ TODO:
 Potion Ideas
 =============
 * Water walking
+* Nighg Vision
 * All potion
-* Teleportation
 * Nova
 * Rainbow Aura
 * Philosopher's Potion (Turns EVERYTHING dropped to gold)
 */
 
 #define Main
-
 	InitCommon();
 	InitHealingPotion();
 	InitEnergyPotion();
@@ -21,14 +20,23 @@ Potion Ideas
 	InitFlashPotion();
 	InitSmeltingPotion();
 	InitMagnetPotion();
+	InitTeleportPotion();
+	// InitBlinkPotion();
+	InitEnterprisingFlask();
+	InitBarbaricFlask();
+	InitOverloadedPhial();
 	
 	InitCommands();
 	
-#define OnRoomLoad
+#define OnRoomLoad()
 	ItemEdit(ItemSpeedPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
 	ItemEdit(ItemFlashPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
 	ItemEdit(ItemSmeltingPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
 	ItemEdit(ItemMagnetPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemTeleportPotion, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemOverloadPhial, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemEnterprisingFlask, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
+	ItemEdit(ItemBarbaricFlask, ItemData.Unlocked, HasSkill(Skill.Thaumaturgy));
 
 #define InitCommands()
 	// New commands for debugging
@@ -40,8 +48,8 @@ Potion Ideas
 	CommandCreate("smeltingpotion", false, ScriptWrap(GiveSmeltingPotion));
 	CommandCreate("magnetpotion", false, ScriptWrap(GiveMagnetPotion));
 	CommandCreate("energypotion", false, ScriptWrap(GiveEnergyPotion));
-	CommandCreate("dospeedpotion", false, ScriptWrap(StartSpeedPotionBuff));
-	CommandCreate("doflashpotion", false, ScriptWrap(StartFlashPotionBuff));
+	CommandCreate("teleportpotion", false, ScriptWrap(GiveTeleportPotion));
+	CommandCreate("teleportpotion", false, ScriptWrap(GiveTeleportPotion));
 
 #define GivePotions()
 	GainItem(Item.HealingPotion, 1);
@@ -57,6 +65,10 @@ Potion Ideas
 	GainItem(InitEnergyPotion, 1);
 	GainItem(GiveSmeltingPotion, 1);
 	GainItem(GiveMagnetPotion, 1);
+	GainItem(ItemTeleportPotion, 1);
+	GainItem(ItemOverloadPhial, 1);
+	GainItem(ItemEnterprisingFlask, 1);
+	GainItem(ItemBarbaricFlask, 1);
 	
 
 #define GiveSpeedPotion()
@@ -73,4 +85,9 @@ Potion Ideas
 
 #define GiveMagnetPotion()
 	GainItem(ItemMagnetPotion, 1);
+
+#define GiveTeleportPotion()
+	GainItem(ItemTeleportPotion, 1);
 	
+
+

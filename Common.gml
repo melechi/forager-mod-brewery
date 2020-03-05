@@ -53,7 +53,8 @@
 		instance_destroy(id);
 	}
 
-
+#define PlaySound(str)
+	audio_play_sound(asset_get_index(str), 0, false);
 
 
 #define NoScript
